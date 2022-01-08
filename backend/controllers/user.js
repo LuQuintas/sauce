@@ -2,6 +2,9 @@ const user = require ('../models/user');
 const bcrypt = require ('bcrypt');
 const jwt = require ('jsonwebtoken');
 
+///////
+//CREATION DE COMPTE AVEC SIGNUP
+//////
 
 exports.signup = (req, res, next) => {
     const regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/;
@@ -23,6 +26,10 @@ exports.signup = (req, res, next) => {
         res.status(401).json({message:"Mot de passe non sécurisé. (6 caractères min dont un chiffre, une lettre et caractère spécial facultatif)"})
     }
 };
+
+////////
+// CONNEXION DE COMPTE
+///////
 
 exports.login = (req, res, next) => {
     user.findOne({email: req.body.email })
